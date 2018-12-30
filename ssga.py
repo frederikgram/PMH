@@ -26,7 +26,7 @@ def ssga() -> list:
     _num_additions = 2  # How many children to create at a time
 
     # Evolutionary boundaries
-    _max_score = 0.95
+    _max_score = 0.7
 
     # Store globally best solution
     _globally_fittest_genome = None
@@ -50,20 +50,16 @@ def ssga() -> list:
         # Find the fittest genome
         fittest_genome = population[0]
 
-        # Assure globally best solution is stored
-        if (
-            _globally_fittest_genome is not None
-            and fittest_genome.fitness > _globally_fittest_genome.fitness
-        ):
+        if _globally_fittest_genome is None:
+            _globally_fittest_genome = fittest_genome
 
+        # Assure globally best solution is stored
+        if fittest_genome.fitness > _globally_fittest_genome.fitness:
             _globally_fittest_genome = fittest_genome
 
         # Return Logic
-        if (
-            _globally_fittest_genome is not None
-            and _globally_fittest_genome.fitness >= _max_score
-        ):
-            return fittest_genome.weights
+        if _globally_fittest_genome.fitness >= _max_score:
+            return _globally_fittest_genome.weights
 
         # Remove the n worst genomes where n is equal to _num_additions
         population = population[:-_num_additions]
