@@ -21,7 +21,7 @@ def ssga() -> list:
     # Configuration variables
 
     _population_size = 100
-    _mutation_rate = 100
+    _mutation_rate = 100    # A value of 100 means that each genome has a 1/100th chance of mutating
     _num_weights = 5
     _num_additions = 2  # How many children to create at a time
 
@@ -65,10 +65,10 @@ def ssga() -> list:
         ):
             return fittest_genome.weights
 
-        # Remove the n worst genomes where n is equal _num_additions
+        # Remove the n worst genomes where n is equal to _num_additions
         population = population[:-_num_additions]
 
-        # Crossover
+        # Mean Value Crossover
         for i in range(0, _num_additions + 1, 2):
             tmp_weights = [
                 mean([a, b])
@@ -76,7 +76,7 @@ def ssga() -> list:
             ]
             child = Genome(weights=tmp_weights, fitness=None)
 
-            # Mutation
+            # Uniform Mutation
             if randint(0, _mutation_rate) == 1:
                 idx = randint(0, _num_weights - 1)
                 child.weights[idx] = uniform(0, 1)
