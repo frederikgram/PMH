@@ -50,11 +50,8 @@ def ssga() -> list:
         # Find the fittest genome
         fittest_genome = population[0]
 
-        if _globally_fittest_genome is None:
-            _globally_fittest_genome = fittest_genome
-
         # Assure globally best solution is stored
-        if fittest_genome.fitness > _globally_fittest_genome.fitness:
+        if _globally_fittest_genome is None or fittest_genome.fitness > _globally_fittest_genome.fitness:
             _globally_fittest_genome = fittest_genome
 
         # Return Logic
