@@ -21,7 +21,9 @@ def ssga() -> list:
     # Configuration variables
 
     _population_size = 100
-    _mutation_rate = 100    # A value of 100 means that each genome has a 1/100th chance of mutating
+    _mutation_rate = (
+        100
+    )  # A value of 100 means that each genome has a 1/100th chance of mutating
     _num_weights = 5
     _num_additions = 2  # How many children to create at a time
 
@@ -51,7 +53,10 @@ def ssga() -> list:
         fittest_genome = population[0]
 
         # Assure globally best solution is stored
-        if _globally_fittest_genome is None or fittest_genome.fitness > _globally_fittest_genome.fitness:
+        if (
+            _globally_fittest_genome is None
+            or fittest_genome.fitness > _globally_fittest_genome.fitness
+        ):
             _globally_fittest_genome = fittest_genome
 
         # Return Logic
