@@ -26,7 +26,7 @@ def ssga() -> list:
     _num_additions = 2  # How many children to create at a time
 
     # Evolutionary boundaries
-    _max_score = 0.7
+    _max_score = 0.9
 
     # Store globally best solution
     _globally_fittest_genome = None
