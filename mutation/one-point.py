@@ -20,4 +20,4 @@ def one_point(vector: List) -> List:
     return vector
 
 
-print(one_point([1, 1, 2, 6, 5]))
+#print(one_point([1, 1, 2, 6, 5]))
