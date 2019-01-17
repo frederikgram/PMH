@@ -13,7 +13,7 @@ class Genome:
 
 def assessment_function(weights: list) -> float:
     """ Returns a float based on the mean of the input weights"""
-    return mean(weights)
+    return sum([weights[0] * 0.1, weights[1] * 0.9, weights[2] * 0])
 
 
 def ssga() -> list:
@@ -21,8 +21,8 @@ def ssga() -> list:
     # Configuration variables
 
     _population_size = 100
-    _mutation_rate = 100 # A value of 100 means that each genome has a 1/100th chance of mutating
-    _num_weights = 5
+    _mutation_rate = 100  # A value of 100 means that each genome has a 1/100th chance of mutating
+    _num_weights = 3
     _num_additions = 2  # How many children to create at a time
 
     # Evolutionary boundaries
